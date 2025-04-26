@@ -2,7 +2,7 @@
     height: 70vh;
     margin: 25px auto;
     background: url('/header_img.png') no-repeat;
-    border-radius: 15px 15px 15px 15px;
+    /* border-radius: 15px 15px 15px 15px; */
     background-size: cover;
     position: relative;
 }

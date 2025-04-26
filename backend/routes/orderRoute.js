@@ -1,9 +1,10 @@
 import express from 'express';
 import authMiddleware from '../middleware/auth.js';  
-import { placeorder } from '../controllers/orderController.js'; 
+import { placeOrder } from '../controllers/orderController.js'; 
 
 const orderRouter = express.Router();
 
-// POST route to place an order, with authentication middleware
-orderRouter.post('/place', authMiddleware.place, placeorder); 
+// Route to place an order (protected route)
+orderRouter.post('/', authMiddleware, placeOrder);
+
 export default orderRouter;

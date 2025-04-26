@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: space-between;
     background-color:  rgb(239 204 48);;
-    border-radius: 10px 10px 10px 10px;
+    /* border-radius: 10px 10px 10px 10px; */
     display: flex;
     box-sizing: border-box;
     /* background-image: url('/navbar.jpg'); */
