@@ -1,5 +1,10 @@
+.Navbarmain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .navbar{
-    width: 100%;
+    width: 90%;
     padding: 0px 20px;
     height: 75px;
     display: flex;
