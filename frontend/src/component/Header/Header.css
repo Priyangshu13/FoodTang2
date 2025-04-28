@@ -1,12 +1,17 @@
 .header{
-    height: 70vh;
-    margin: 25px auto;
-    background: url('/header_img.png') no-repeat;
+    height: 80vh;
+    margin: 2px auto;
+    background: url('src/assets/header2.jpg') no-repeat;
     /* border-radius: 15px 15px 15px 15px; */
     background-size: cover;
     position: relative;
+    z-index: 3;
 }
-
+.headerBg{
+    height: 80vh;
+    z-index:4;
+    background: linear-gradient(0.25turn, #020202, rgba(0, 0, 0, 0));
+}
 .header-contain{
     position: absolute;
     display: flex;
