@@ -1,3 +1,8 @@
+.Navbarmain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .navbar{
     width: 100%;
     padding: 0px 20px;
@@ -5,7 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color:  rgb(239 204 48);;
+    background-color:  rgb(241, 129, 0);;
     /* border-radius: 10px 10px 10px 10px; */
     display: flex;
     box-sizing: border-box;

@@ -1,12 +1,13 @@
 .explore-menu{
     display: flex;
-    gap: 20px;
+    padding-left: 20px;
     flex-direction: column;
 }
 
 .explore-menu h1{
     color: rgb(101, 99, 99);
     font-weight: 500;
+    padding-bottom: 10px;
 }
 
 .explore-menu-text{
