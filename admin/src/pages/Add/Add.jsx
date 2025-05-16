@@ -4,7 +4,6 @@ import "./Add.css";
 import { assets } from "../../assets/assets";
 import axios from "axios";
 
-// eslint-disable-next-line react/prop-types
 const Add = ({ url = "http://localhost:4000" }) => { // Default URL
   const [image, setImage] = useState(false);
   const [data, setData] = useState({

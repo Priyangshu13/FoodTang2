@@ -3,11 +3,13 @@ import React, { useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import Sidebar from './components/Sidebar/Sidebar'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import Add from './pages/Add/Add'
+import Dashboard from './pages/Dashboard/Dashboard'
 import List from './pages/List/List'
 import Orders from './pages/Orders/Orders'
 import Login from './pages/Login/Login'
-import Signup from './pages/Signup/Signup'
+import Inventory from './pages/Inventory/Inventory'
+import StaffControl from './pages/Staffcontroll/StaffControl'
+import Reservation from './pages/Reservation/Reservation'
 
 const App = () => {
   const url = "http://localhost:4000"
@@ -32,10 +34,12 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Navigate to="/login"/>} />
           <Route path="/login" element={<Login url={url} />} />
-          <Route path="/signup" element={<Signup url={url} />} />
-          <Route path="/add" element={<Add url={url} />} />
+          <Route path="/dashboard" element={<Dashboard url={url} />} />
+          <Route path="/inventory" element={<Inventory url={url} />} />
           <Route path="/list" element={<List url={url} />} />
           <Route path="/orders" element={<Orders url={url} />} />
+          <Route path="/staffcontrol" element={<StaffControl url={url} />} />
+          <Route path="/reservation" element={<Reservation url={url} />} />
         </Routes>
       </div>
     </div>

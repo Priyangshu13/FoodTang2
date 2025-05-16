@@ -1,9 +1,9 @@
 .add{
     width: 70%;
-    margin-left: max(5vw,25px);
-    margin-top: 50px;
+    margin-top: -95.3vh;
     color: #6d6d6d;
     font-size: 16px;
+    margin-left: 20vw;
 }
 
 .add form{
@@ -21,8 +21,6 @@
 }
 .add-category-price{
     display: flex;
-    gap: 30px;
-    
 }
 .add-category-price select,.add-category-price input{
     max-width: 120px;
@@ -32,8 +30,24 @@
 .add-btn{
     max-width: 120px;
     border: none;
-    padding: 2vw;
+    padding: 1vw;
     background-color: black;
     color: white;
     cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .add {
+        width: 90%;
+        margin-left: 5vw;
+        margin-top: 5vh;
+    }
+    .add-category-price {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .add-btn {
+        width: 100%;
+        max-width: none;
+    }
 }

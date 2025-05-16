@@ -1,76 +1,66 @@
-/* eslint-disable no-unused-vars */
+ 
 import React, { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom'; 
-import "./Signup.css";
-import { handleError, handleSuccess } from '../../utils';
+import "./CreateManagerAcc.css";
+import { handleError, handleSuccess } from '../../utils2';
 
 const Signup = () => {
 
     const [signupInfo, setSignupInfo] = useState({
         name: '',
-        email: ' ',
+        email: '', 
         password: '',
-        confirmPassword: '' // Optional field for password confirmation
+        confirmPassword: ''
     });
 
     const navigate = useNavigate();
 
     const handleChange = (e) => {
-        const {name, value} = e.target;
-        const copySignupInfo = {...signupInfo};
-        copySignupInfo[name] = value;
-        setSignupInfo(copySignupInfo);
-    }
+        const { name, value } = e.target;
+        setSignupInfo({ ...signupInfo, [name]: value });
+    };
 
     const validatePassword = (password, confirmPassword) => {
-        // Check if the password meets the required criteria
-        const minLength = 8;  // Minimum length for password
+        const minLength = 8;
         const upperCase = /[A-Z]/;
         const lowerCase = /[a-z]/;
         const number = /[0-9]/;
         const specialChar = /[!@#$%^&*(),.?":{}|<>]/;
 
         if (password.length < minLength) {
-            return "Password must be at least 6 characters long.";
+            return "Password must be at least 8 characters long.";
         }
-
         if (!upperCase.test(password)) {
             return "Password must contain at least one uppercase letter.";
         }
-
         if (!lowerCase.test(password)) {
             return "Password must contain at least one lowercase letter.";
         }
-
         if (!number.test(password)) {
             return "Password must contain at least one number.";
         }
-
         if (!specialChar.test(password)) {
             return "Password must contain at least one special character.";
         }
-
         if (password !== confirmPassword) {
             return "Passwords do not match.";
         }
 
-        return null; // Return null if all validations pass
+        return null; // No errors
     };
 
     const handleSignup = async (e) => {
         e.preventDefault();
         const { name, email, password, confirmPassword } = signupInfo;
 
-        // Basic client-side validation
         if (!name || !email || !password) {
             return handleError('Name, email, and password are required.');
         }
 
-        // Password validation
         const passwordError = validatePassword(password, confirmPassword);
         if (passwordError) {
-            return handleError(passwordError); // Show password validation error
+            return handleError(passwordError);
         }
 
         try {
@@ -80,7 +70,7 @@ const Signup = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(signupInfo)
+                body: JSON.stringify({ name, email, password })
             });
 
             const result = await response.json();
@@ -90,29 +80,30 @@ const Signup = () => {
                 handleSuccess(message);
                 console.log('Redirecting to login...');
                 setTimeout(() => {
-                    navigate('/login'); // Redirect to the login page
+                    navigate('/dashboard');
                 }, 1000);
-            } else if (error) {
-                const details = error?.details[0].message;
-                handleError(details);
+            } else {
+                const errorMessage = error?.details?.[0]?.message || message || "Email already exits.";
+                handleError(errorMessage);
             }
-        } catch (error) {
-            handleError(error);
+        } catch (err) {
+            handleError(err.message || "Something went wrong.");
         }
-    }
+    };
 
     return (
+        <div className='main'>
         <div className='container'>
-            <h1>Signup</h1>
+            <h1>Create Manager Account</h1>
             <form onSubmit={handleSignup}>
                 <div>
                     <label htmlFor="name">Name</label>
                     <input 
                         onChange={handleChange}
-                        type="text"  
+                        type="text"
                         name="name"
                         autoFocus
-                        placeholder='Enter Your Name'
+                        placeholder="Enter Your Name"
                         value={signupInfo.name}
                     />
                 </div>
@@ -120,9 +111,9 @@ const Signup = () => {
                     <label htmlFor="email">Email</label>
                     <input 
                         onChange={handleChange}
-                        type="email"  
+                        type="email"
                         name="email"
-                        placeholder='Enter Your Email'
+                        placeholder="Enter Your Email"
                         value={signupInfo.email}
                     />
                 </div>
@@ -130,9 +121,9 @@ const Signup = () => {
                     <label htmlFor="password">Password</label>
                     <input 
                         onChange={handleChange}
-                        type="password"  
+                        type="password"
                         name="password"
-                        placeholder='Enter Your Password'
+                        placeholder="Enter Your Password"
                         value={signupInfo.password}
                     />
                 </div>
@@ -140,20 +131,18 @@ const Signup = () => {
                     <label htmlFor="confirmPassword">Confirm Password</label>
                     <input 
                         onChange={handleChange}
-                        type="password"  
+                        type="password"
                         name="confirmPassword"
-                        placeholder='Confirm Your Password'
+                        placeholder="Confirm Your Password"
                         value={signupInfo.confirmPassword}
                     />
                 </div>
-                <button>Signup</button>
-                <span>
-                    Already have an account? <Link to="/login">Login</Link>
-                </span>
+                <button type="submit">Create Account</button>
             </form>
             <ToastContainer />
         </div>
+        </div>
     );
-}
+};
 
 export default Signup;

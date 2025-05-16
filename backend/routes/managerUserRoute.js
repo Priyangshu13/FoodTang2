@@ -3,7 +3,7 @@ import { signup, login } from '../controllers/managerUserController.js';
 
 const router = express.Router();
 
-// Routes for signup and login
+// Manager Auth Routes
 router.post('/signup', signup);
 router.post('/login', login);
 

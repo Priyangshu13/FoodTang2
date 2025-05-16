@@ -1,0 +1,45 @@
+
+
+/* Navbar.css */
+
+.AdminNavbar {
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+.AdminNavbar .logo{
+    width: 150px;
+}
+.AdminNavbar .profile{
+    width: 50px;
+}
+
+  .AdminNavbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .logout-button {
+    padding: 6px 12px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .logout-button:hover {
+    background-color: #ff1a1a;
+  }
+  
+  .user-name {
+    font-weight: bold;
+    color: #333;
+  }
+  

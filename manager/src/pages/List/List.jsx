@@ -71,13 +71,13 @@ const List = ({ url = "http://localhost:4000" }) => { // Provide a default URL
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>₹{item.price}</p>
-              <p
+              <button
                 onClick={() => removeFood(item._id)}
-                className="cursor"
+                className="toggle-button"
                 title="Remove this item"
               >
-                X
-              </p>
+                Remove
+              </button>
             </div>
           ))
         ) : (

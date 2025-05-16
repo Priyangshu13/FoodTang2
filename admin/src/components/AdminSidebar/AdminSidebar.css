@@ -1,0 +1,69 @@
+.AdminSidebar {
+    width: 18%;
+    min-height: 100vh;
+    border: 1.5px solid #a9a9a9;
+    border-top: 0;
+    font-size: max(1vw, 10px);
+    transition: all 0.3s ease;
+  }
+  
+  .AdminSidebar-options {
+    padding-top: 50px;
+    padding-left: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+  
+  .AdminSidebar-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #a9a9a9;
+    border-right: 0;
+    padding: 8px 10px;
+    border-radius: 2px 0px 3px;
+    cursor: pointer;
+    text-decoration: none;  /* 🔥 REMOVE UNDERLINE */
+    color: black;            /* 🔥 CHANGE TEXT COLOR */
+    transition: all 0.3s ease;
+  }
+  .AdminSidebar-option>img{
+    width: 30px;
+  }
+  .AdminSidebar-option p {
+    margin: 0;
+    color: black;            /* 🔥 Make sure paragraph text is black */
+  }
+  
+  .AdminSidebar-option.active {
+    background-color: #fff0ed;
+    border-color: tomato;
+    color: tomato;           /* 🔥 Active text color */
+  }
+  
+  .AdminSidebar-option.active p {
+    color: tomato;           /* 🔥 Active text color for p also */
+  }
+  
+  /* =============== Responsive Design =============== */
+  @media (max-width: 900px) {
+    .AdminSidebar {
+      width: 70px;
+    }
+  
+    .AdminSidebar-options {
+      padding-left: 0;
+      align-items: center;
+    }
+  
+    .AdminSidebar-option {
+      justify-content: center;
+      padding: 10px 0;
+    }
+  
+    .AdminSidebar-option p {
+      display: none;
+    }
+  }
+  

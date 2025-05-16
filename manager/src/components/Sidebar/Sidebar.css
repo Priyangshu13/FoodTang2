@@ -13,6 +13,10 @@
     gap: 25px;
 }
 
+.sidebar-option>img{
+    width: 30px;
+  }
+
 .sidebar-option{
     display: flex;
     align-items: center;

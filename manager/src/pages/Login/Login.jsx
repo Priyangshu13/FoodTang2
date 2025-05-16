@@ -1,12 +1,12 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom'; 
-import "./Login.css"; // You can rename this to "Login.css" later if you want
+import "./Login.css";
 import { handleError, handleSuccess } from '../../utils';
 
 const Login = () => {
-
     const [loginInfo, setLoginInfo] = useState({
         email: '',
         password: ''
@@ -38,16 +38,21 @@ const Login = () => {
             });
 
             const result = await response.json();
-            const { success, message, token, error } = result;
+            const { success, message, token, error, data } = result; // <-- Added data here
 
             if (success) {
                 handleSuccess(message);
 
-                // Optionally save token if you want authentication
+                // Save token
                 localStorage.setItem('token', token);
 
+                // Save user name if available
+                if (data?.name) {
+                    localStorage.setItem('name', data.name);
+                }
+
                 setTimeout(() => {
-                    navigate('/add'); // Redirect to dashboard or home after login
+                    navigate('/dashboard'); // Redirect after login
                 }, 1000);
             } else if (error) {
                 const details = error?.details?.[0]?.message || error?.message;
@@ -83,10 +88,7 @@ const Login = () => {
                         value={loginInfo.password}
                     />
                 </div>
-                <button>Login</button>
-                <span>
-                    Don't have an account? <Link to="/signup">Signup</Link>
-                </span>
+                <button type="submit">Login</button>
             </form>
             <ToastContainer />
         </div>

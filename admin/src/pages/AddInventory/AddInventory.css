@@ -1,0 +1,129 @@
+
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Container for the inventory page */
+  .inventory-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    margin-top: -85vh;
+    margin-left: 23.5vw;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;  /* Ensures nothing overflows the container */
+  }
+  
+  /* Form for adding new inventory items */
+  .inventory-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .inventory-form input {
+    flex: 1 1 180px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  .inventory-form button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+  }
+  
+  .inventory-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Table styling */
+  .inventory-table {
+    
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .inventory-table th,
+  .inventory-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .inventory-table th {
+    background-color: #f2f2f2;
+    
+  }
+  
+  .inventory-table td button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    margin-left: 8px;
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .inventory-table td button:hover {
+    background-color: #b02a37;
+  }
+  
+  /* No items available message */
+  .no-items {
+    text-align: center;
+    color: #777;
+    margin-top: 20px;
+  }
+  
+  
+  /* Responsive Design */
+  
+  /* Make the form inputs stack on smaller screens */
+  @media screen and (max-width: 768px) {
+    .inventory-form input {
+      flex: 1 1 100%; /* Full width for inputs on smaller screens */
+      margin-bottom: 10px;
+    }
+  
+    .inventory-form button {
+      flex: 1 1 100%;
+    }
+  }
+  
+  /* Make table scrollable horizontally on smaller screens */
+  @media screen and (max-width: 768px) {
+    .inventory-table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  
+    .inventory-table th,
+    .inventory-table td {
+      padding: 8px;
+      font-size: 12px;
+    }
+  
+    .inventory-table td button {
+      font-size: 12px;
+    }
+  }
+  
+  

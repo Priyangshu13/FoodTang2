@@ -1,0 +1,55 @@
+.inventory-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  .inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .inventory-table th,
+  .inventory-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .inventory-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .inventory-table .action {
+    width: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Wider action column */
+  }
+  .inventory-table .name, .qty, .unit, .cost{
+    width: 10vw;
+  } 
+  
+  button {
+    padding: 6px 12px;
+    margin-right: 5px;
+    background-color: #e74c3c;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #c0392b;
+  }
+  
+  .no-items {
+    margin-top: 20px;
+    font-style: italic;
+  }
