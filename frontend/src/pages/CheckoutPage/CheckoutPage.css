@@ -1,0 +1,105 @@
+/* CheckoutPage.css */
+
+:root {
+    --primary-color-start: #3E8E7E;
+    --primary-color-end: #283E51;
+    --accent-color: #FF6B6B;
+    --background-color: #f9f9f9;
+    --container-bg: #ffffff;
+    --font-color: #2c3e50;
+    --font-family: 'Poppins', sans-serif;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background: linear-gradient(to right, var(--background-color), #eaeaea);
+    min-height: 100vh;
+    color: var(--font-color);
+  }
+  
+  .checkout-container {
+    max-width: 520px;
+    margin: 60px auto;
+    padding: 30px;
+    background: var(--container-bg);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .checkout-container::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle at top right, #3E8E7E 0%, transparent 70%);
+    z-index: 0;
+  }
+  
+  .checkout-container h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--primary-color-end);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .checkout-container button,
+  .checkout-container .cashon a {
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    margin-top: 22px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .checkout-container button {
+    background: linear-gradient(to right, var(--primary-color-start), var(--primary-color-end));
+    color: #ffffff;
+    border: none;
+  }
+  
+  .checkout-container button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(62, 142, 126, 0.4);
+  }
+  
+  .cashon a {
+    background: var(--accent-color);
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .cashon a:hover {
+    background: #e65a5a;
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+  }
+  
+  @media (max-width: 600px) {
+    .checkout-container {
+      margin: 40px 16px;
+      padding: 24px;
+    }
+  
+    .checkout-container button,
+    .checkout-container .cashon a {
+      font-size: 15px;
+      padding: 12px 16px;
+    }
+  }
+  
