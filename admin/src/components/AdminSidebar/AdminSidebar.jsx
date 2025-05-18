@@ -26,11 +26,11 @@ const AdminSidebar = () => {
           <p>Add items</p>
         </NavLink>
         <NavLink to='/list' className="AdminSidebar-option">
-          <img src={assets.order_icon} alt="List icon" />
+          <img src={assets.list_icon} alt="List icon" />
           <p>List items</p>
         </NavLink>
         <NavLink to='/addinventory' className="AdminSidebar-option">
-          <img src={assets.order_analysis} alt=" " />
+          <img src={assets.inventory} alt=" " />
           <p>Add Inventory</p>
         </NavLink>
         <NavLink to='/orderanalysis' className="AdminSidebar-option">
