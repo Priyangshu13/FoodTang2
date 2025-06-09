@@ -1,63 +1,33 @@
 import OrderModel from '../models/orderModel.js';
 import UserModel from '../models/userModel.js';
-import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
-// Placing user order for frontend
 const placeOrder = async (req, res) => {
-  const frontend_url = 'http://localhost:5173';
-
   try {
-    // Create a new order
+    const { userId, items, amount, address, paymentMethod } = req.body;
+
+    if (!userId || !items?.length || !amount || !paymentMethod) {
+      return res.status(400).json({ success: false, message: 'Missing required fields' });
+    }
+
     const newOrder = new OrderModel({
-      userid: req.body.userId,
-      items: req.body.items,
-      amount: req.body.amount,
-      address: req.body.address,
+      userId,
+      items,
+      amount,
+      address: address || {},
+      paymentMethod,
+      paymentDone: paymentMethod === 'online',
+      status: paymentMethod === 'cod' ? 'Pending Payment' : 'Processing',
     });
+
     await newOrder.save();
 
-    // Clear user's cart
-    await UserModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
+    // Clear user's cart after placing order
+    await UserModel.findByIdAndUpdate(userId, { cartData: {} });
 
-    // Prepare line items for Stripe
-    const line_items = req.body.items.map((item) => ({
-      price_data: {
-        currency: 'inr',
-        product_data: {
-          name: item.name,
-        },
-        unit_amount: item.price * 100 * 84, // Assuming 84 is a conversion factor
-      },
-      quantity: item.quantity,
-    }));
-
-    // Add delivery charges
-    line_items.push({
-      price_data: {
-        currency: 'inr',
-        product_data: {
-          name: 'Delivery Charges',
-        },
-        unit_amount: 2 * 100 * 84,
-      },
-      quantity: 1,
-    });
-
-    // Create a Stripe checkout session
-    const session = await stripe.checkout.sessions.create({
-      line_items: line_items,
-      mode: 'payment',
-      success_url: `${frontend_url}/verify?success=true&orderId=${newOrder._id}`,
-      cancel_url: `${frontend_url}/verify?success=false&orderId=${newOrder._id}`,
-    });
-
-    // Respond with the session URL
-    res.json({ success: true, session_url: session.url });
+    res.status(201).json({ success: true, orderId: newOrder._id });
   } catch (error) {
-    console.error('Error placing order:', error);
-    res.json({ success: false, message: 'Error placing order', error: error.message });
+    console.error('Order error:', error);
+    res.status(500).json({ success: false, message: 'Failed to place order', error: error.message });
   }
 };
 
