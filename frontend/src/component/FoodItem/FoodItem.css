@@ -34,6 +34,7 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .quantity-control {
@@ -47,7 +48,8 @@
   font-size: 16px;
 }
 
-/* 🔽 Responsive Design: Tablets */
+
+/* 🔽 Tablet View (≤ 768px) */
 @media (max-width: 768px) {
   .food-item {
     width: 180px;
@@ -67,29 +69,44 @@
   }
 }
 
-/* 🔽 Responsive Design: Phones */
+
+/* 🔽 Mobile View (≤ 480px) — Compact */
 @media (max-width: 480px) {
   .food-item {
     width: 100%;
-    margin-bottom: 16px;
+    padding: 10px;
+    margin-bottom: 14px;
+    border-radius: 10px;
   }
 
   .food-item-image {
-    height: 120px;
+    height: 100px;
+    border-radius: 6px;
   }
 
-  .quantity-control {
-    flex-direction: column;
-    gap: 6px;
+  .food-item-info {
+    padding-top: 8px;
   }
 
-  .quantity-control button {
-    padding: 4px 8px;
-    width: 100%;
+  .food-item-price {
+    font-size: 14px;
+    margin: 6px 0;
   }
 
   .add-to-cart-btn {
+    font-size: 12px;
+    padding: 6px;
     width: 100%;
-    padding: 8px;
+  }
+
+  .quantity-control {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .quantity-control button {
+    padding: 3px 8px;
+    font-size: 12px;
   }
 }
