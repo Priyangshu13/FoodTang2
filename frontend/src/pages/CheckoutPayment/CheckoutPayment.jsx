@@ -1,23 +1,27 @@
+// components/CheckoutPayment.jsx
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { StoreContext } from '../../context/StoreContext'; // ✅ make sure this path is correct
+import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
 
 const CheckoutPayment = () => {
   const navigate = useNavigate();
-  const { getTotalCartAmount, token, food_list = [], cartItems = {}, url } = useContext(StoreContext);
-
-  const [paymentMethod, setPaymentMethod] = useState('cod'); // 'cod' or 'online'
+  const {
+    getTotalCartAmount,
+    token,
+    food_list = [],
+    cartItems = {},
+    url
+  } = useContext(StoreContext);
+  const [paymentMethod, setPaymentMethod] = useState('cod');
 
   const placeOrder = async (e) => {
     e.preventDefault();
 
-    // Build order items with quantities
     const orderItems = food_list
       .filter(item => cartItems[item._id] > 0)
       .map(item => ({ ...item, quantity: cartItems[item._id] }));
 
-    // For demonstration, adding a dummy address object, replace with real data as needed
     const address = {
       street: "123 Main St",
       city: "CityName",
@@ -27,17 +31,16 @@ const CheckoutPayment = () => {
 
     const orderData = {
       items: orderItems,
-      amount: getTotalCartAmount() + 2, // Add delivery charge
+      amount: getTotalCartAmount() + 2, // Assumes 2 is delivery fee or similar
       paymentMethod,
-      address,           // required by backend
+      address,
     };
-
-    console.log("Sending token to backend:", token);
-    console.log("Order Data:", orderData);
 
     try {
       const response = await axios.post(`${url}/api/order`, orderData, {
-        headers: { token }
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       if (response.data.success) {
@@ -47,8 +50,13 @@ const CheckoutPayment = () => {
         alert("Error placing order");
       }
     } catch (err) {
-      console.error("Order error:", err);
-      alert("Failed to place order.");
+      if (err.response?.status === 401) {
+        alert("Session expired. Please login again.");
+        navigate("/login");
+      } else {
+        console.error("Order error:", err);
+        alert("Failed to place order.");
+      }
     }
   };
 
@@ -76,7 +84,7 @@ const CheckoutPayment = () => {
               checked={paymentMethod === 'online'}
               onChange={() => setPaymentMethod('online')}
             />
-            Online Payment (Placeholder)
+            Online Payment
           </label>
         </div>
         <button type="submit">Proceed to Pay</button>

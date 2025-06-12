@@ -1,10 +1,23 @@
 import express from 'express';
-import authMiddleware from '../middleware/auth.js';
-import { placeOrder } from '../controllers/orderController.js';
+import {
+  placeOrder,
+  updatePaymentStatus,
+  getAllOrders,
+  getMyOrders
+} from '../controllers/orderController.js';
 
-const orderRouter = express.Router();
+const router = express.Router();
 
-// POST /api/order  (Protected route)
-orderRouter.post('/', authMiddleware, placeOrder);
+// POST /orders/place
+router.post('/place', placeOrder);
 
-export default orderRouter;
+// PUT /orders/payment/:id
+router.put('/payment/:id', updatePaymentStatus);
+
+// GET /orders/all
+router.get('/all', getAllOrders);
+
+// ✅ New route: GET /orders/my/:userId
+router.get('/my/:userId', getMyOrders);
+
+export default router;

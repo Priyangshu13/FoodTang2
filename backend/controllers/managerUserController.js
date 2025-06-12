@@ -1,5 +1,5 @@
 import managerUserModel from "../models/managerUser.js";
-import bcrypt from 'bcrypt';
+import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 const signup = async (req, res) => {
@@ -10,7 +10,7 @@ const signup = async (req, res) => {
       return res.status(409).json({ success: false, error: { message: "Email already exists." } });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcryptjs.hash(password, 10);
     const newUser = new managerUserModel({ name, email, password: hashedPassword });
     await newUser.save();
 
@@ -29,7 +29,7 @@ const login = async (req, res) => {
       return res.status(401).json({ success: false, error: { message: "Invalid email or password" } });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcryptjs.compare(password, user.password);
     if (!isMatch) {
       return res.status(401).json({ success: false, error: { message: "Invalid email or password" } });
     }

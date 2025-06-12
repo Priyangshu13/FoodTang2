@@ -11,6 +11,7 @@ import ItemAnalysis from './pages/ItemAnalysis/ItemAnalysis';
 import CustomerReview from './pages/CustomerReview/CustomerReview';
 import AdminLogin from './pages/AdminLogin/AdminLogin';
 import AddInventory from './pages/AddInventory/AddInventory';
+import Paymentupadtion from './pages/PaymentUpdation/Paymentupadtion';
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/addinventory" element={<AddInventory/>} />
           <Route path="/itemanalysis" element={<ItemAnalysis />} />
           <Route path="/review" element={<CustomerReview />} />
+          <Route path="/payment-updation" element={<Paymentupadtion/>} />
         </Routes>
       </div>
     </div>

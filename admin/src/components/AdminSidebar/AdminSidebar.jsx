@@ -33,6 +33,10 @@ const AdminSidebar = () => {
           <img src={assets.inventory} alt=" " />
           <p>Add Inventory</p>
         </NavLink>
+        <NavLink to='/payment-updation' className="AdminSidebar-option">
+          <img src={assets.payment} alt="" />
+          <p>Payment Updation</p>
+        </NavLink>
         <NavLink to='/orderanalysis' className="AdminSidebar-option">
           <img src={assets.order_analysis} alt=" " />
           <p>Orders Analysis</p>

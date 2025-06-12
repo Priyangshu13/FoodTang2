@@ -1,5 +1,5 @@
 import adminUserModel from "../models/adminUser.js";
-import bcrypt from 'bcrypt';
+import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 const login = async (req, res) => {
@@ -11,7 +11,7 @@ const login = async (req, res) => {
       return res.status(401).json({ success: false, error: { message: "Invalid email or password" } });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcryptjs.compare(password, user.password);
     if (!isMatch) {
       return res.status(401).json({ success: false, error: { message: "Invalid email or password" } });
     }

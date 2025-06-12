@@ -23,6 +23,7 @@ app.use(requestLogger);
 app.use('/images', express.static('uploads'));
 
 app.use('/admin', adminUserRouter);
+app.use('/api/admin', adminUserRouter);
 app.use('/manager', managerUserRouter);
 app.use('/api/food', foodRouter);
 app.use('/api/user', userRouter);
