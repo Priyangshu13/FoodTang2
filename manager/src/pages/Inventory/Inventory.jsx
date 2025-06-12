@@ -12,7 +12,7 @@ const Inventory = () => {
 
   const fetchItems = async () => {
     try {
-      const res = await axios.get('http://localhost:4000/api/inventory');
+      const res = await axios.get('https://foodtang-backend.onrender.com/api/inventory');
       if (Array.isArray(res.data)) {
         setItems(res.data);
       } else {
@@ -27,7 +27,7 @@ const Inventory = () => {
 
   const deleteItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/inventory/${id}`);
+      await axios.delete(`https://foodtang-backend.onrender.com/api/inventory/${id}`);
       fetchItems();
     } catch (error) {
       console.error('Failed to delete item:', error);
