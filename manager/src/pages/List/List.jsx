@@ -4,7 +4,7 @@ import PropTypes from "prop-types"; // For prop type validation
 import "./List.css";
 import axios from "axios";
 
-const List = ({ url = "http://localhost:4000" }) => { // Provide a default URL
+const List = ({ url = "https://foodtang-backend.onrender.com" }) => { // Provide a default URL
   const [list, setList] = useState([]);
   const [error, setError] = useState(null); // State to store error messages
   const [notification, setNotification] = useState(""); // State to store notifications
