@@ -1,4 +1,11 @@
-/* Base styling for each food item */
+/* 🔼 Wrapper for food items */
+.food-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+}
+
 .food-item {
   border: 1px solid #eee;
   padding: 16px;
@@ -6,7 +13,7 @@
   width: 240px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   transition: 0.3s;
-  background-color: #fff;
+  box-sizing: border-box;
 }
 
 .food-item:hover {
@@ -49,24 +56,10 @@
   font-size: 16px;
 }
 
-/* 💻 Large Screens (≥1200px) */
-@media (min-width: 1200px) {
+/* 🔽 Responsive Design: Tablets */
+@media (max-width: 768px) {
   .food-item {
-    width: 260px;
-  }
-}
-
-/* 🖥 Medium Desktops (1025px–1199px) */
-@media (max-width: 1199px) and (min-width: 1025px) {
-  .food-item {
-    width: 220px;
-  }
-}
-
-/* 📱 Tablets (768px–1024px) */
-@media (max-width: 1024px) and (min-width: 768px) {
-  .food-item {
-    width: 45%;
+    width: 180px;
     padding: 12px;
   }
 
@@ -83,66 +76,29 @@
   }
 }
 
-/* 📱 Phones (481px–767px) */
-@media (max-width: 767px) and (min-width: 481px) {
-  .food-item {
-    width: 48%;
-    margin-bottom: 16px;
-  }
-
-  .food-item-image {
-    height: 130px;
-  }
-
-  .add-to-cart-btn {
-    width: 100%;
-    font-size: 13px;
-  }
-
-  .quantity-control {
-    gap: 8px;
-  }
-
-  .quantity-control button {
-    font-size: 13px;
-    padding: 4px 8px;
-  }
-}
-
-/* 📱 Extra Small Phones (≤480px) */
+/* 🔽 Responsive Design: Phones */
 @media (max-width: 480px) {
   .food-item {
-    width: 48%;
+    flex: 1 1 calc(50% - 8px); /* Two items per row */
     margin-bottom: 16px;
-    padding: 10px;
   }
 
   .food-item-image {
-    height: 110px;
-    border-radius: 6px;
-  }
-
-  .food-item-info {
-    padding-top: 8px;
-  }
-
-  .food-item-price {
-    font-size: 13px;
-  }
-
-  .add-to-cart-btn {
-    width: 100%;
-    padding: 6px;
-    font-size: 12px;
+    height: 120px;
   }
 
   .quantity-control {
-    flex-direction: row;
+    flex-direction: column;
     gap: 6px;
   }
 
   .quantity-control button {
-    font-size: 12px;
-    padding: 3px 6px;
+    padding: 4px 8px;
+    width: 100%;
+  }
+
+  .add-to-cart-btn {
+    width: 100%;
+    padding: 8px;
   }
 }
