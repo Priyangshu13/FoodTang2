@@ -1,5 +1,8 @@
 import React from 'react'
 import './BookTable.css'
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 const BookTable = () => {
   return (
@@ -11,7 +14,15 @@ const BookTable = () => {
           <option value="Durgapur">Durgapur</option>
           <option value="Asansol">Asansol</option>
         </select>
-        <button className='booktable-btn'>Book Table</button>
+        {/* <button className='booktable-btn'>Book Table</button> */}
+
+        <Link to="/bookingform">
+
+          <button className="booktable-btn">
+            Book Table
+          </button>
+
+        </Link>
       </div>
     </div>
   )
