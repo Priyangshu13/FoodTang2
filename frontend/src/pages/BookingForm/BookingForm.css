@@ -1,6 +1,14 @@
+.Main_bookingcontainer{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('src/assets/texture.jpg') ;
+
+}
 .booking-container {
     display: flex;
-    height: 100vh;
+    width: 60vw;
     font-family: sans-serif;
     background: #fff;
 }

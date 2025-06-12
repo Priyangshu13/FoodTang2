@@ -3,6 +3,7 @@ import './BookingForm.css';
 
 const BookingForm = () => {
     return (
+    <div className='Main_bookingcontainer'>
         <div className="booking-container">
             <div className="form-section">
                 <h1 className="logo">FOODTANG</h1>
@@ -39,6 +40,7 @@ const BookingForm = () => {
                 <p className="image-placeholder">Image here</p>
             </div>
         </div>
+    </div>
     );
 };
 
