@@ -20,6 +20,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
     color: white;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -52,20 +53,32 @@ input[type="time"] {
     text-align: center;
 }
 
+.bookbtn{
+    display: flex;
+    justify-content: center;
+}
 .book-button {
     margin-top: 20px;
-    padding: 15px;
+    padding: 15px 30px;
+    /* Adjust for button size */
     border-radius: 30px;
     border: 2px solid white;
-    background-color: transparent;
+    background: linear-gradient(0.75turn, #521A03, #b83805);
     color: white;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
+    
+    width: auto;
+    /* Prevent full width */
+    display: inline-block;
+    /* Shrink to content */
+    align-self: flex-start;
+    /* Prevent flex column stretch */
 }
 
 .book-button:hover {
-    background-color: white;
+    background: white;
     color: #8B2C06;
 }
 

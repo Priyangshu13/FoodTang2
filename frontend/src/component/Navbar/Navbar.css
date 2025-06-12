@@ -16,7 +16,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgb(255, 255, 255);
+    /* background: rgb(255, 255, 255); */
+    background: linear-gradient(0.25turn, #521A03, #b83805);
     /* border-radius: 10px 10px 10px 10px; */
     box-sizing: border-box;
     /* background-image: url('/navbar.jpg'); */
@@ -33,7 +34,7 @@
     display: flex;
     list-style: none;
     gap: 25px;
-    color: #3d3d3d;
+    color: #ffffff;
     font-size: 24px;
 }
 
