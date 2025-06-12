@@ -19,7 +19,7 @@ const Inventory = () => {
 
   const fetchItems = async () => {
     try {
-      const res = await axios.get('http://localhost:4000/api/inventory');
+      const res = await axios.get('https://foodtang-backend.onrender.com/api/inventory');
       setItems(Array.isArray(res.data) ? res.data : []);
     } catch (error) {
       console.error('Failed to load inventory:', error);
