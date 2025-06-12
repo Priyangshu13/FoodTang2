@@ -1,9 +1,15 @@
+/* Reset box-sizing for consistent layout */
+* {
+  box-sizing: border-box;
+}
+
 /* Container for all food items */
 .food-container {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
   justify-content: center;
+  padding: 16px;
 }
 
 /* Individual food item card */
@@ -49,6 +55,7 @@
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
+  width: 100%;
 }
 
 /* Quantity controls */
@@ -112,7 +119,6 @@
   .add-to-cart-btn {
     font-size: 12px;
     padding: 6px;
-    width: 100%;
   }
 
   .quantity-control {
