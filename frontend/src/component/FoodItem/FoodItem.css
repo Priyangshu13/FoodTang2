@@ -46,3 +46,50 @@
   padding: 4px 10px;
   font-size: 16px;
 }
+
+/* 🔽 Responsive Design: Tablets */
+@media (max-width: 768px) {
+  .food-item {
+    width: 180px;
+    padding: 12px;
+  }
+
+  .food-item-image {
+    height: 140px;
+  }
+
+  .add-to-cart-btn {
+    padding: 5px 10px;
+  }
+
+  .quantity-control button {
+    font-size: 14px;
+  }
+}
+
+/* 🔽 Responsive Design: Phones */
+@media (max-width: 480px) {
+  .food-item {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .food-item-image {
+    height: 120px;
+  }
+
+  .quantity-control {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .quantity-control button {
+    padding: 4px 8px;
+    width: 100%;
+  }
+
+  .add-to-cart-btn {
+    width: 100%;
+    padding: 8px;
+  }
+}
