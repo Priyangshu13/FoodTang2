@@ -1,4 +1,4 @@
-/* Container to wrap food items */
+/* Container for all food items */
 .food-container {
   display: flex;
   flex-wrap: wrap;
@@ -14,13 +14,14 @@
   width: 240px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   transition: 0.3s;
+  background-color: #fff;
 }
 
 .food-item:hover {
   transform: scale(1.02);
 }
 
-/* Food image */
+/* Image inside food item */
 .food-item-image {
   width: 100%;
   height: 160px;
@@ -28,16 +29,18 @@
   border-radius: 8px;
 }
 
-/* Info section */
+/* Info block below image */
 .food-item-info {
   padding-top: 12px;
 }
 
+/* Price styling */
 .food-item-price {
   font-weight: bold;
   margin: 8px 0;
 }
 
+/* Add to cart button */
 .add-to-cart-btn {
   background: tomato;
   color: white;
@@ -48,18 +51,21 @@
   font-size: 14px;
 }
 
+/* Quantity controls */
 .quantity-control {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-bottom: 8px;
 }
 
 .quantity-control button {
   padding: 4px 10px;
   font-size: 16px;
+  cursor: pointer;
 }
 
-/* 🔽 Tablet View (≤ 768px) */
+/* Tablet view (≤768px) */
 @media (max-width: 768px) {
   .food-item {
     width: 45%;
@@ -72,14 +78,16 @@
 
   .add-to-cart-btn {
     padding: 5px 10px;
+    font-size: 13px;
   }
 
   .quantity-control button {
     font-size: 14px;
+    padding: 4px 8px;
   }
 }
 
-/* 🔽 Mobile View (≤ 480px) — Compact & 2 items/row */
+/* Mobile view (≤480px) - 2 items per row */
 @media (max-width: 480px) {
   .food-item {
     width: 48%;
@@ -88,7 +96,7 @@
   }
 
   .food-item-image {
-    height: 90px;
+    height: 100px;
     border-radius: 6px;
   }
 
@@ -113,7 +121,7 @@
   }
 
   .quantity-control button {
-    padding: 3px 8px;
-    font-size: 11px;
+    padding: 3px 6px;
+    font-size: 12px;
   }
 }
