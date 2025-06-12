@@ -7,8 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preinstall": "npm config set registry https://registry.yarnpkg.com"
   },
+
   "dependencies": {
     "axios": "^1.9.0",
     "joi": "^17.13.3",
