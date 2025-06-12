@@ -28,7 +28,7 @@ const Login = () => {
         }
 
         try {
-            const url = "http://localhost:4000/manager/login"; // Login endpoint
+            const url = "https://foodtang-backend.onrender.com/manager/login"; // Login endpoint
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
