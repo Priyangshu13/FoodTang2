@@ -1,55 +1,88 @@
 .inventory-container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  h2 {
-    margin-bottom: 20px;
-  }
-  
-  .inventory-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .inventory-table th,
-  .inventory-table td {
-    border: 1px solid #ccc;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: clamp(20px, 4vw, 28px);
+  text-align: center;
+}
+
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  min-width: 600px; /* Prevents too much squeezing on small screens */
+}
+
+.inventory-table th,
+.inventory-table td {
+  border: 1px solid #ccc;
+  padding: clamp(8px, 2vw, 12px);
+  text-align: center;
+  font-size: clamp(12px, 2.5vw, 16px);
+  word-break: break-word;
+}
+
+.inventory-table th {
+  background-color: #f4f4f4;
+  font-weight: 600;
+}
+
+.inventory-table .action {
+  width: clamp(120px, 30vw, 200px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+}
+
+.inventory-table .name,
+.inventory-table .qty,
+.inventory-table .unit,
+.inventory-table .cost {
+  width: clamp(80px, 10vw, 120px);
+}
+
+button {
+  padding: 6px 12px;
+  margin: 2px;
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: clamp(12px, 2vw, 14px);
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #c0392b;
+}
+
+.no-items {
+  margin-top: 20px;
+  font-style: italic;
+  text-align: center;
+  font-size: clamp(14px, 2.5vw, 18px);
+}
+
+/* Optional horizontal scroll on very small screens */
+@media (max-width: 600px) {
+  .inventory-container {
     padding: 10px;
-    text-align: center;
   }
-  
-  .inventory-table th {
-    background-color: #f4f4f4;
+
+  .inventory-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
   }
-  
+
   .inventory-table .action {
-    width: 30vw;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Wider action column */
+    flex-direction: column;
   }
-  .inventory-table .name, .qty, .unit, .cost{
-    width: 10vw;
-  } 
-  
-  button {
-    padding: 6px 12px;
-    margin-right: 5px;
-    background-color: #e74c3c;
-    border: none;
-    color: white;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
-  }
-  
-  button:hover {
-    background-color: #c0392b;
-  }
-  
-  .no-items {
-    margin-top: 20px;
-    font-style: italic;
-  }
+}

@@ -1,14 +1,19 @@
-.login-popup{
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
+.login-popup {
+    position: fixed; /* Use fixed so it stays centered on scroll */
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background-color: #00000090;
     display: grid;
+    padding: 20px; /* ensures padding on mobile edges */
 }
-.login-popup-container{
+
+/* Center container */
+.login-popup-container {
     place-self: center;
-    width: max(23vw,330px);
+    width: clamp(300px, 80%, 400px);
     color: #808080;
     background-color: white;
     display: flex;
@@ -16,31 +21,42 @@
     gap: 25px;
     padding: 25px 30px;
     border-radius: 8px;
-    font-size: 14px;
-    animation: fadeIn 0.5s;
+    font-size: clamp(13px, 2.5vw, 14px);
+    animation: fadeIn 0.5s ease-in-out;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
-.login-popup-title{
+
+.login-popup-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: black;
 }
-.login-popup-title img{
+
+.login-popup-title img {
     width: 16px;
     cursor: pointer;
 }
-.login-popup-inputs{
+
+/* Input Section */
+.login-popup-inputs {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.login-popup-inputs input{
+
+.login-popup-inputs input {
     outline: none;
     border: 1px solid #c9c9c9;
     padding: 10px;
     border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
 }
-.login-popup-container button{
+
+/* Button Styling */
+.login-popup-container button {
     border: none;
     padding: 10px;
     border-radius: 4px;
@@ -48,18 +64,46 @@
     background-color: rgb(255, 196, 0);
     font-size: 15px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
-.login-popup-condition{
+
+.login-popup-container button:hover {
+    background-color: rgb(230, 180, 0);
+}
+
+/* Terms Checkbox */
+.login-popup-condition {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     gap: 8px;
     margin-top: -15px;
+    font-size: 13px;
 }
-.login-popup-condition input{
+
+.login-popup-condition input {
     margin-top: 5px;
 }
-.login-popup p span{
+
+/* Link Styling */
+.login-popup p span {
     color: rgb(201, 172, 5);
     font-weight: 500;
     cursor: pointer;
+}
+
+/* Responsive improvements */
+@media (max-width: 400px) {
+    .login-popup-container {
+        padding: 20px;
+        font-size: 13px;
+    }
+
+    .login-popup-inputs input {
+        padding: 8px;
+    }
+
+    .login-popup-container button {
+        font-size: 14px;
+        padding: 9px;
+    }
 }
