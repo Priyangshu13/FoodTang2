@@ -1,48 +1,116 @@
-.my-orders{
-    margin: 50px 0px;
-}
-.my-orders .container{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 30px;
-}
-.my-orders-order{
-    display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 1fr 2fr 1fr;
-    align-items: center;
-    gap: 3opx;
-    font-size: 14px;
-    padding: 10px 20px;
-    color: #454545;
-    border: 1px solid tomato;
-}
-.my-orders-order img{
-    width: 50px;
-}
-.my-orders-order p span{
-    color: tomato;
-}
-.my-orders-order p b{
-    font-weight: 500;
-    color: #454545;
-}
-.my-orders-order button{
-    border: none;
-    padding: 12px 0px;
-    border-radius: 4px;
-    background-color: #ffe1e1;
-    cursor: pointer;
-    color: #454545;
+.my-orders {
+  padding: clamp(20px, 5vw, 40px) clamp(15px, 4vw, 20px);
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: 'Arial', sans-serif;
 }
 
-@media (max-width:900px) {
-     .my-orders-order{
-        grid-template-columns: 1fr 2fr 1fr;
-        row-gap: 5px;
-        font-size: 12px;
-     }
-     .my-orders-order button{
-        font-size: 10px;
-     }
+.my-orders h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: clamp(20px, 5vw, 28px);
+  color: #333;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Order Card */
+.my-orders-order {
+  border: 1px solid #ddd;
+  padding: clamp(16px, 4vw, 20px);
+  border-radius: 8px;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+}
+
+/* Status Icon */
+.my-orders-order img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Order Item Description */
+.order-items {
+  font-size: clamp(14px, 2.5vw, 16px);
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Status Row */
+.order-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: clamp(14px, 2.5vw, 16px);
+}
+
+.status-dot {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.status-dot.pending {
+  color: orange;
+}
+
+.status-dot.completed {
+  color: green;
+}
+
+.status-dot.cancelled {
+  color: red;
+}
+
+/* Track Order Button */
+.track-btn {
+  margin-top: 10px;
+  align-self: flex-start;
+  padding: 8px 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.track-btn:hover {
+  background-color: #0056b3;
+}
+
+/* No Orders Message */
+.no-orders {
+  text-align: center;
+  color: #888;
+  font-size: clamp(14px, 2.5vw, 16px);
+}
+
+/* Small Screen Adjustments */
+@media (max-width: 500px) {
+  .my-orders-order {
+    padding: 16px;
+    gap: 10px;
+  }
+
+  .track-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .order-status {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .order-items {
+    word-wrap: break-word;
+  }
 }

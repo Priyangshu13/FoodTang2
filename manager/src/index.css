@@ -1,37 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Gupter:wght@400;500;700&family=Outfit:wght@100..900&family=Wittgenstein:ital,wght@0,400..900;1,400..900&display=swap');
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: Outfit;
+  font-family: 'Outfit', sans-serif;
 }
 
-body{
+/* Ensure the body takes full viewport height with flexible background */
+body {
   min-height: 100vh;
   background-color: #fcfcfc;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
+  transition: color 0.3s ease;
 }
 
-hr{
+a:hover,
+a:focus {
+  color: tomato; /* example hover color */
+}
+
+hr {
   border: none;
   height: 1px;
   background-color: #a9a9a9;
-}
-.app-content{
-  display: flex;
+  margin: 1em 0; /* add vertical spacing */
 }
 
-.flex-col{
+/* Layout containers */
+.app-content {
+  display: flex;
+  flex-wrap: wrap; /* allow wrapping on smaller screens */
+  gap: 20px; /* space between flex items */
+  padding: 10px;
+}
+
+/* Flex column helper */
+.flex-col {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  flex: 1 1 100%; /* take full width on small screens */
 }
 
-.cursor{
+/* Cursor helper */
+.cursor {
   cursor: pointer;
+}
+
+/* Responsive media query example to adjust layout */
+@media (min-width: 768px) {
+  .app-content {
+    flex-wrap: nowrap; /* horizontal layout on tablets+ */
+  }
+  .flex-col {
+    flex: 1; /* share available space */
+  }
 }

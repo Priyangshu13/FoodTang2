@@ -8,8 +8,9 @@ import Footer from './component/Footer/Footer';
 import LoginPopup from './component/LoginPopup/LoginPopup';
 import Verify from './pages/Verify/Verify';
 import MyOrders from './pages/MyOrders/MyOrders';
-import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
-import OrderSuccess from './pages/OrderSuccess/OrderSuccess';
+
+import FullMenuPage from './pages/FullMenuPage/FullMenuPage';
+import ExploreMenu from './component/ExploreMenu/ExploreMenu';
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -29,9 +30,10 @@ const App = () => {
           <Route path='/cart' element={<Cart />} />
           <Route path='/order' element={<PlaceOrder />} />
           <Route path='/verify' element={<Verify/>}/>
-          <Route path='/myorders' element={<MyOrders/>}/>
-          <Route path='/checkout' element={<CheckoutPage/>} />
-        <Route path='/order-success' element={<OrderSuccess />} />
+          <Route path="/myorders" element={<MyOrders />} />
+
+        <Route path="/full-menu" element={<FullMenuPage />} />
+        <Route path="/" element={<ExploreMenu />} />
         </Routes>
       </div>
       

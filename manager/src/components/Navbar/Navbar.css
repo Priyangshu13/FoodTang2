@@ -1,12 +1,40 @@
-.navbar{
-    display: flex;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(5px, 2vw, 15px) clamp(4%, 6vw, 8%);
+  background-color: #fff; /* Optional: background for visibility */
+  position: relative;     /* For fixed/absolute future use */
+  z-index: 100;
+}
+
+/* Logo scaling */
+.navbar .logo {
+  width: clamp(100px, 20vw, 150px);
+  height: auto;
+}
+
+/* Profile image scaling */
+.navbar .profile {
+  width: clamp(30px, 8vw, 50px);
+  height: auto;
+  border-radius: 50%; /* Optional: make it circular */
+  cursor: pointer;
+}
+
+/* Optional: mobile stacking (if more elements are added) */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    padding: 5px 4%;
-}
-.navbar .logo{
-    width: 150px;
-}
-.navbar .profile{
-    width: 50px;
+    padding: 10px 5%;
+  }
+
+  .navbar .logo {
+    width: 120px;
+  }
+
+  .navbar .profile {
+    width: 40px;
+  }
 }

@@ -1,0 +1,135 @@
+/* Base styles */
+.full-menu-page {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 40px auto 0 auto;  /* Adds space from the top (navbar) */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+
+  background-color: transparent; /* Set background to transparent */
+  border-radius: 16px;
+  box-shadow: none; /* Remove box shadow for a cleaner look */
+
+  transition: all 0.3s ease-in-out;
+  animation: fadeInPage 0.6s ease-out;
+}
+
+
+
+.full-menu-page h1 {
+  font-size: 2.8rem;
+  text-align: left; /* Change from center to left */
+  margin-bottom: 10px;
+  color: #34495e;
+}
+
+.instruction-text {
+  text-align: left; /* Align left to match the heading */
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  color: #707e80;
+}
+
+/* Category Buttons */
+.explore-menu-list {
+  display: flex;
+  flex-wrap: nowrap;      /* Force horizontal layout */
+  overflow-x: auto;        /* Enable scrolling */
+  gap: 16px;               /* Reduced gap for tighter spacing */
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+  scroll-snap-type: x mandatory; /* Optional: smooth scroll snapping */
+}
+
+.explore-menu-list::-webkit-scrollbar {
+  height: 8px;
+}
+
+.explore-menu-list::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 8px;
+}
+
+/* List Items */
+.explore-menu-list-item {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  width: 110px;           /* Smaller card width */
+  padding: 10px 8px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+.explore-menu-list-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.explore-menu-list-item img {
+  width: 100%;
+  height: 60px;           /* Smaller height */
+  object-fit: contain;    /* Show full image without crop */
+  border-radius: 6px;
+  margin-bottom: 8px;
+  border: 2px solid transparent;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+
+.explore-menu-list-item img.active {
+  border-color: #8da7a5;
+  transform: scale(1.05);
+}
+.explore-menu-list-item p {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #2c3e50;
+  margin-top: 4px;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #ecf0f1;
+  margin: 40px auto;
+  width: 80%;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .full-menu-page h1 {
+    font-size: 2.2rem;
+  }
+
+  .explore-menu-list-item {
+    width: 130px;
+    padding: 12px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .full-menu-page h1 {
+    font-size: 1.8rem;
+  }
+
+  .instruction-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .explore-menu-list {
+    gap: 15px;
+  }
+
+  .explore-menu-list-item {
+    width: 110px;
+    padding: 10px 6px;
+  }
+
+  .explore-menu-list-item p {
+    font-size: 0.9rem;
+  }
+}

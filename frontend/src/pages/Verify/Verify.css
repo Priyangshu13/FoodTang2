@@ -1,19 +1,23 @@
-.verify{
-    min-height: 60vn;
-    display: grid;
+.verify {
+  min-height: 60vh; /* fixed typo from 'vn' to 'vh' */
+  display: grid;
+  place-items: center; /* cleaner centering */
+  padding: 20px;
 }
 
-.verify .spinner{
-    width: 100px;
-    height: 100px;
-    place-self: center;
-    border: 5px solid #babdbd;
-    border-top-color: tomato;
-    border-radius: 50%;
-    animation: rotate 1s infinite;
+/* Responsive spinner */
+.verify .spinner {
+  width: clamp(60px, 15vw, 100px);
+  height: clamp(60px, 15vw, 100px);
+  border: 5px solid #babdbd;
+  border-top-color: tomato;
+  border-radius: 50%;
+  animation: rotate 1s linear infinite;
 }
+
+/* Animation */
 @keyframes rotate {
-    100%{
-        transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
+  }
 }
