@@ -6,12 +6,9 @@ const orderSchema = new mongoose.Schema({
   amount: { type: Number, required: true },
   address: { type: Object, default: {} },
   status: { type: String, default: "Food Processing" },
-  Date: { type: Date, default: Date.now },
   paymentMethod: { type: String, enum: ['online', 'cod'], required: true },
   paymentDone: { type: Boolean, default: false },
-  paymentStatus: { type: String, enum: ['Paid', 'Unpaid'], default: 'Unpaid' }
-});
+}, { timestamps: true }); // ✅ Adds createdAt and updatedAt fields
 
-
-const orderModel = mongoose.models.order || mongoose.model("order", orderSchema);
-export default orderModel;
+const OrderModel = mongoose.models.order || mongoose.model("order", orderSchema);
+export default OrderModel;

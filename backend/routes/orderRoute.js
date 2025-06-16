@@ -1,23 +1,20 @@
 import express from 'express';
+import authMiddleware from '../middleware/auth.js';
 import {
   placeOrder,
+  getMyOrders,
   updatePaymentStatus,
-  getAllOrders,
-  getMyOrders
+  getAllOrdersForAdmin
 } from '../controllers/orderController.js';
 
-const router = express.Router();
+const orderRouter = express.Router();
 
-// POST /orders/place
-router.post('/place', placeOrder);
+// User Routes
+orderRouter.post('/', authMiddleware, placeOrder);
+orderRouter.get('/my-orders', authMiddleware, getMyOrders);
 
-// PUT /orders/payment/:id
-router.put('/payment/:id', updatePaymentStatus);
+// Admin Routes
+orderRouter.get('/', getAllOrdersForAdmin); // ✅ Get all orders (for payment updation page)
+orderRouter.put('/update-payment/:id', updatePaymentStatus); // ✅ Update payment status by admin
 
-// GET /orders/all
-router.get('/all', getAllOrders);
-
-// ✅ New route: GET /orders/my/:userId
-router.get('/my/:userId', getMyOrders);
-
-export default router;
+export default orderRouter;

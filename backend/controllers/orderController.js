@@ -1,12 +1,15 @@
 import OrderModel from '../models/orderModel.js';
 import UserModel from '../models/userModel.js';
 
+// ----------------------------
+// 1. Place an Order (User)
+// ----------------------------
 export const placeOrder = async (req, res) => {
   try {
+    const userId = req.user.id;
     const { items, amount, address, paymentMethod } = req.body;
-    const userId = req.body.userId;
 
-    if (!userId || !items?.length || !amount || !paymentMethod) {
+    if (!items?.length || !amount || !paymentMethod) {
       return res.status(400).json({ success: false, message: 'Missing required fields' });
     }
 
@@ -14,11 +17,10 @@ export const placeOrder = async (req, res) => {
       userId,
       items,
       amount,
-      address,
+      address: address || {},
       paymentMethod,
       paymentDone: paymentMethod === 'online',
-      paymentStatus: paymentMethod === 'online' ? 'Paid' : 'Unpaid',
-      status: paymentMethod === 'cod' ? 'Pending Payment' : 'Processing'
+      status: paymentMethod === 'cod' ? 'Pending Payment' : 'Processing',
     });
 
     await newOrder.save();
@@ -28,57 +30,61 @@ export const placeOrder = async (req, res) => {
     res.status(201).json({ success: true, orderId: newOrder._id });
   } catch (error) {
     console.error('Order error:', error);
-    res.status(500).json({ success: false, message: 'Failed to place order' });
+    res.status(500).json({ success: false, message: 'Failed to place order', error: error.message });
   }
 };
 
-export const updatePaymentStatus = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { paymentStatus } = req.body;
-
-    if (!['Paid', 'Unpaid'].includes(paymentStatus)) {
-      return res.status(400).json({ success: false, message: 'Invalid payment status' });
-    }
-
-    const order = await OrderModel.findById(id);
-    if (!order) {
-      return res.status(404).json({ success: false, message: 'Order not found' });
-    }
-
-    order.paymentStatus = paymentStatus;
-    order.paymentDone = paymentStatus === 'Paid';
-    order.status = paymentStatus === 'Paid' ? 'Payment Received' : 'Pending Payment';
-
-    await order.save();
-
-    res.status(200).json({ success: true, message: 'Payment status updated' });
-  } catch (err) {
-    console.error('Update payment status error:', err);
-    res.status(500).json({ success: false, message: 'Server error' });
-  }
-};
-
-export const getAllOrders = async (req, res) => {
-  try {
-    const orders = await OrderModel.find().sort({ createdAt: -1 });
-    res.status(200).json({ success: true, orders });
-  } catch (error) {
-    console.error('Get all orders error:', error);
-    res.status(500).json({ success: false, message: 'Failed to get all orders' });
-  }
-};
-
-// ✅ Added this function:
+// ----------------------------
+// 2. Get My Orders (User)
+// ----------------------------
 export const getMyOrders = async (req, res) => {
   try {
-    const userId = req.params.userId;
-
+    const userId = req.user.id;
     const orders = await OrderModel.find({ userId }).sort({ createdAt: -1 });
-
     res.status(200).json({ success: true, orders });
   } catch (error) {
-    console.error('Get my orders error:', error);
-    res.status(500).json({ success: false, message: 'Failed to fetch user orders' });
+    console.error('Error fetching user orders:', error);
+    res.status(500).json({ success: false, message: 'Failed to fetch orders' });
+  }
+};
+
+// ----------------------------
+// 3. Get All Orders (Admin)
+// ----------------------------
+export const getAllOrdersForAdmin = async (req, res) => {
+  try {
+    const orders = await OrderModel.find().populate("userId", "name email");
+    res.status(200).json({ success: true, orders });
+  } catch (error) {
+    console.error('Admin fetch orders error:', error);
+    res.status(500).json({ success: false, message: 'Failed to fetch orders' });
+  }
+};
+
+// ----------------------------
+// 4. Update Payment Status (Admin)
+// ----------------------------
+export const updatePaymentStatus = async (req, res) => {
+  const { id } = req.params;
+  const { paymentDone } = req.body;
+
+  try {
+    const order = await OrderModel.findByIdAndUpdate(
+      id,
+      {
+        paymentDone,
+        status: paymentDone ? 'Processing' : 'Pending Payment',
+      },
+      { new: true }
+    );
+
+    if (!order) {
+      return res.status(404).json({ success: false, message: "Order not found" });
+    }
+
+    res.status(200).json({ success: true, message: "Payment status updated", order });
+  } catch (error) {
+    console.error('Payment update error:', error);
+    res.status(500).json({ success: false, message: "Failed to update payment status" });
   }
 };

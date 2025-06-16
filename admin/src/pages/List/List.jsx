@@ -1,94 +1,93 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types"; // For prop type validation
-import "./List.css";
+import PropTypes from "prop-types";
 import axios from "axios";
+import "./List.css";
 
-const List = ({ url = "http://localhost:4000" }) => { // Provide a default URL
+const List = ({ url = "http://localhost:4000" }) => {
   const [list, setList] = useState([]);
-  const [error, setError] = useState(null); // State to store error messages
-  const [notification, setNotification] = useState(""); // State to store notifications
+  const [error, setError] = useState(null);
+  const [notification, setNotification] = useState("");
 
-  // Fetch the list of food items
-  const fetchlist = async () => {
+  const fetchList = async () => {
     try {
-      const response = await axios.get(`${url}/api/food/list`);
-      if (response.data.success) {
-        setList(response.data.data);
-        setError(null); // Clear any previous errors
+      const { data } = await axios.get(`${url}/api/food/list`);
+      if (data.success) {
+        setList(data.data);
+        setError(null);
       } else {
-        setError(response.data.message || "Failed to fetch the list.");
+        setError(data.message || "Failed to fetch the list.");
       }
-    } catch (error) {
-      setError(error.message || "An error occurred while fetching the list.");
+    } catch (err) {
+      setError(err.message || "An error occurred while fetching the list.");
     }
   };
 
-  // Remove a food item by ID
   const removeFood = async (foodId) => {
     try {
-      const response = await axios.post(`${url}/api/food/remove`, { id: foodId });
-      if (response.data.success) {
-        setNotification("Item removed successfully!"); // Set success notification
-        fetchlist(); // Refresh the list
+      const { data } = await axios.post(`${url}/api/food/remove`, { id: foodId });
+      if (data.success) {
+        setNotification("✅ Item removed successfully!");
+        fetchList();
       } else {
-        setNotification(response.data.message || "Failed to remove item.");
+        setNotification(`⚠️ ${data.message || "Failed to remove item."}`);
       }
-    // eslint-disable-next-line no-unused-vars
-    } catch (error) {
-      setNotification("An error occurred while removing the item.");
+    } catch {
+      setNotification("❌ An error occurred while removing the item.");
     } finally {
-      // Clear the notification after 3 seconds
       setTimeout(() => setNotification(""), 3000);
     }
   };
 
-  // Fetch the list when the component mounts
   useEffect(() => {
-    fetchlist();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className="list add flex-col">
-      <p>All Foods List</p>
-      {/* Display error messages */}
-      {error && <p className="error-message">Error: {error}</p>}
-      {/* Display notifications */}
-      {notification && <p className="notification-message">{notification}</p>}
+      <h2>🍽 All Food Items</h2>
+
+      {error && <div className="error-message">🚫 {error}</div>}
+      {notification && <div className="notification-message">{notification}</div>}
+
       <div className="list-table">
-        <div className="list-table-format title">
-          <b>Image</b>
-          <b>Name</b>
-          <b>Category</b>
-          <b>Price</b>
-          <b>Action</b>
+        <div className="list-table-header">
+          <span>Image</span>
+          <span>Name</span>
+          <span>Category</span>
+          <span>Price</span>
+          <span>Action</span>
         </div>
+
         {list.length > 0 ? (
-          list.map((item, index) => (
-            <div key={index} className="list-table-format">
-              <img src={`${url}/images/${item.image}`} alt={item.name} />
-              <p>{item.name}</p>
-              <p>{item.category}</p>
-              <p>₹{item.price}</p>
-              <p
+          list.map((item) => (
+            <div key={item._id} className="list-table-row">
+              <img
+                src={`${url}/images/${item.image}`}
+                alt={item.name}
+                className="food-image"
+              />
+              <span>{item.name}</span>
+              <span>{item.category}</span>
+              <span>₹{item.price}</span>
+              <button
+                className="remove-button"
                 onClick={() => removeFood(item._id)}
-                className="cursor"
                 title="Remove this item"
               >
-                X
-              </p>
+                Remove
+              </button>
             </div>
           ))
         ) : (
-          <p>No food items available.</p>
+          <div className="no-items">🥲 No food items available.</div>
         )}
       </div>
     </div>
   );
 };
 
-// Prop type validation for the `url` prop
 List.propTypes = {
   url: PropTypes.string,
 };

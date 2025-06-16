@@ -1,0 +1,15 @@
+.my-orders {
+  padding: 30px;
+}
+
+.order-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  background-color: #fffbea;
+}
+
+.order-card p {
+  margin: 6px 0;
+}

@@ -29,12 +29,16 @@ const AdminSidebar = () => {
           <img src={assets.list_icon} alt="List icon" />
           <p>List items</p>
         </NavLink>
+        <NavLink to='/booking' className="AdminSidebar-option">
+          <img src={assets.review} alt="" />
+          <p>Booking</p>
+        </NavLink>
         <NavLink to='/addinventory' className="AdminSidebar-option">
           <img src={assets.inventory} alt=" " />
           <p>Add Inventory</p>
         </NavLink>
-        <NavLink to='/payment-updation' className="AdminSidebar-option">
-          <img src={assets.payment} alt="" />
+        <NavLink to='/paymentupdation' className="AdminSidebar-option">
+          <img src={assets.inventory} alt=" " />
           <p>Payment Updation</p>
         </NavLink>
         <NavLink to='/orderanalysis' className="AdminSidebar-option">

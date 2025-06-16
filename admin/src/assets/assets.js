@@ -12,6 +12,7 @@ import manager_icon from './manager2.png'
 import item2 from './item2.png'
 import inventory from './inventory.png'
 import list_icon from './list.png'
+// import Paymentupdate_icon from './paymentupdate.png'
 
 
 
@@ -30,7 +31,9 @@ export const assets ={
     manager_icon,
     item2,
     inventory,
-    list_icon
+    list_icon,
+    // Paymentupdate_icon
+    
 }
 
 export const url = 'http://localhost:4000'

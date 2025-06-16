@@ -2,7 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import { connectDB } from './config/db.js';
-
 import foodRouter from './routes/foodRoute.js';
 import userRouter from './routes/userRoute.js';
 import cartRouter from './routes/cartRoute.js';
@@ -10,8 +9,11 @@ import managerUserRouter from './routes/managerUserRoute.js';
 import adminUserRouter from './routes/adminUserRoute.js';
 import orderRouter from './routes/orderRoute.js';
 import inventoryRouter from './routes/inventoryRoute.js';
-
 import { requestLogger, errorHandler } from './middleware/errorinventory.js';
+import bookingRouter from './routes/bookingRoute.js';
+
+
+
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -21,15 +23,15 @@ app.use(express.json());
 app.use(requestLogger);
 
 app.use('/images', express.static('uploads'));
-
 app.use('/admin', adminUserRouter);
 app.use('/api/admin', adminUserRouter);
 app.use('/manager', managerUserRouter);
 app.use('/api/food', foodRouter);
 app.use('/api/user', userRouter);
 app.use('/api/cart', cartRouter);
-app.use('/api/order', orderRouter);      // **Important: orderRouter mounted here**
+app.use('/api/order', orderRouter);     
 app.use('/api/inventory', inventoryRouter);
+app.use('/api/booking', bookingRouter);
 
 app.get('/', (req, res) => res.send('API is working'));
 

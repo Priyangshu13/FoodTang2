@@ -1,0 +1,98 @@
+.Main_bookingcontainer{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('src/assets/texture.jpg') ;
+
+}
+.booking-container {
+    display: flex;
+    width: 60vw;
+    font-family: sans-serif;
+    background: #fff;
+}
+
+.form-section {
+    background-color: #8B2C06;
+    padding: 40px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    color: white;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.logo {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+select,
+input[type="date"],
+input[type="time"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 20px;
+    border: none;
+    background-color: #F5C042;
+    font-weight: bold;
+    text-align: center;
+}
+
+.bookbtn{
+    display: flex;
+    justify-content: center;
+}
+.book-button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    /* Adjust for button size */
+    border-radius: 30px;
+    border: 2px solid white;
+    background: linear-gradient(0.75turn, #521A03, #b83805);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    width: auto;
+    /* Prevent full width */
+    display: inline-block;
+    /* Shrink to content */
+    align-self: flex-start;
+    /* Prevent flex column stretch */
+}
+
+.book-button:hover {
+    background: white;
+    color: #8B2C06;
+}
+
+.image-section {
+    width: 50%;
+    background-color: #eee;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-placeholder {
+    font-size: 24px;
+    color: #555;
+}

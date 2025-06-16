@@ -19,22 +19,16 @@ const Navbar = ({ setShowLogin }) => {
   }
 
   return (
+    <div className='Navbarmain'>
     <div className='navbar'>
-      
-      <Link to='/'> <img src={assets.logo} alt="Logo" className='logo' /> </Link>
+      <Link to=''><img src={assets.logo} alt="Logo" className='logo' /></Link>
       <ul className='navbar-menu'>
         <li>
-          <Link 
-            to='/' 
-            onClick={() => setMenu("Home")} 
-            className={menu === "Home" ? "active" : ""}
-          >
-            Home
-          </Link>
-        </li>
+            <Link to=''><a>Home</a></Link>
+         </li>
         <li>
           <a 
-            href='#explore-menu' 
+            href='/#explore-menu' 
             onClick={() => setMenu("Menu")} 
             className={menu === "Menu" ? "active" : ""}
           >
@@ -43,7 +37,7 @@ const Navbar = ({ setShowLogin }) => {
         </li>
         <li>
           <a 
-            href='#app-download' 
+            href='/#app-download' 
             onClick={() => setMenu("Mobile app")} 
             className={menu === "Mobile app" ? "active" : ""}
           >
@@ -63,11 +57,10 @@ const Navbar = ({ setShowLogin }) => {
       <div className="navbar-right">
         <img src={assets.search_icon} alt="Search Icon" />
         <div className="navbar-search-icon">
-          
-          <Link to='/cart'> <img src={assets.basket_icon} alt="Basket Icon" /></Link>
+          <Link to='/cart'><img src={assets.basket_icon} alt="Basket Icon"/></Link>
           <div className={getTotalCartAmount()===0?"":"dot"}></div>
         </div>
-        {!token?<button onClick={() => setShowLogin(true)}>SIGN IN</button>
+        {!token?<button onClick={() => setShowLogin(true)}>Sign in</button>
         : <div className='navbar-profile'>
             <img src={assets.profile_icon} alt="" />
             <ul className="nav-profile-dropdown">
@@ -78,6 +71,7 @@ const Navbar = ({ setShowLogin }) => {
           </div>}
         
       </div>
+    </div>
     </div>
   );
 };

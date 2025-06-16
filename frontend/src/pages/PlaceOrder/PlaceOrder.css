@@ -48,14 +48,14 @@
   min-width: 100px;
 }
 
-/* Right Section */
+
 .place-order-right {
   width: 100%;
   max-width: 500px;
   flex: 1;
 }
 
-/* Cart Total Styling */
+
 .place-order .cart-total button {
   margin-top: 30px;
   width: 100%;
@@ -87,7 +87,7 @@
   background-color: rgb(185, 59, 37);
 }
 
-/* Responsive Adjustments for Mobile */
+/* Responsive Design */
 @media (max-width: 768px) {
   .place-order {
     flex-direction: column;

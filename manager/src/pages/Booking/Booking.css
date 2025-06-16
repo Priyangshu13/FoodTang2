@@ -1,0 +1,124 @@
+.admin-dashboard {
+  padding: 1.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1000px; /* compress overall width */
+    margin-left: 20vw;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.5rem 0.75rem; /* tighter spacing */
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  font-size: 14px;
+}
+
+th {
+  background-color: tomato;
+  color: #fff;
+  font-weight: 600;
+}
+
+tbody tr:hover {
+  background-color: #f1f9ff;
+}
+
+.error {
+  color: #d9534f;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.admin-dashboard table button {
+  padding: 4px 8px;
+  margin: 0 2px;
+  font-size: 11px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.admin-dashboard table button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.admin-dashboard table button:nth-child(1) {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.admin-dashboard table button:nth-child(2) {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* Media Queries */
+
+/* Tablets and below */
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 1rem;
+    max-width: 90%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  th, td {
+    padding: 0.4rem 0.5rem;
+    font-size: 13px;
+  }
+
+  .admin-dashboard table button {
+    padding: 3px 6px;
+    font-size: 10px;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .admin-dashboard {
+    padding: 0.5rem;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  th, td {
+    padding: 0.3rem 0.4rem;
+    font-size: 12px;
+  }
+
+  .admin-dashboard table button {
+    padding: 2px 5px;
+    font-size: 9px;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

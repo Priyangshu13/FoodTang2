@@ -1,4 +1,4 @@
-// components/CheckoutPayment.jsx
+// src/components/CheckoutPayment.jsx
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
@@ -6,13 +6,7 @@ import axios from 'axios';
 
 const CheckoutPayment = () => {
   const navigate = useNavigate();
-  const {
-    getTotalCartAmount,
-    token,
-    food_list = [],
-    cartItems = {},
-    url
-  } = useContext(StoreContext);
+  const { getTotalCartAmount, token, food_list = [], cartItems = {}, url } = useContext(StoreContext);
   const [paymentMethod, setPaymentMethod] = useState('cod');
 
   const placeOrder = async (e) => {
@@ -20,18 +14,23 @@ const CheckoutPayment = () => {
 
     const orderItems = food_list
       .filter(item => cartItems[item._id] > 0)
-      .map(item => ({ ...item, quantity: cartItems[item._id] }));
+      .map(item => ({
+        _id: item._id,
+        name: item.name,
+        price: item.price,
+        quantity: cartItems[item._id],
+      }));
 
     const address = {
       street: "123 Main St",
-      city: "CityName",
-      postalCode: "12345",
-      country: "CountryName"
+      city: "Sample City",
+      postalCode: "123456",
+      country: "India"
     };
 
     const orderData = {
       items: orderItems,
-      amount: getTotalCartAmount() + 2, // Assumes 2 is delivery fee or similar
+      amount: getTotalCartAmount() + 2,
       paymentMethod,
       address,
     };
@@ -44,50 +43,44 @@ const CheckoutPayment = () => {
       });
 
       if (response.data.success) {
-        alert(`Order placed successfully! Your order ID is: ${response.data.orderId}`);
-        navigate("/confirm-payment");
+        alert(`Order placed successfully! Order ID: ${response.data.orderId}`);
+        navigate('/my-orders');
       } else {
-        alert("Error placing order");
+        alert('Something went wrong.');
       }
-    } catch (err) {
-      if (err.response?.status === 401) {
-        alert("Session expired. Please login again.");
-        navigate("/login");
-      } else {
-        console.error("Order error:", err);
-        alert("Failed to place order.");
-      }
+    } catch (error) {
+      console.error('Order error:', error);
+      alert('Failed to place order. Please try again.');
     }
   };
 
   return (
     <div>
-      <h2>Checkout Payment</h2>
+      <h2>Checkout</h2>
       <form onSubmit={placeOrder}>
-        <div>
-          <label>
-            <input
-              type="radio"
-              name="paymentMethod"
-              value="cod"
-              checked={paymentMethod === 'cod'}
-              onChange={() => setPaymentMethod('cod')}
-            />
-            Cash on Delivery
-          </label>
-          <br />
-          <label>
-            <input
-              type="radio"
-              name="paymentMethod"
-              value="online"
-              checked={paymentMethod === 'online'}
-              onChange={() => setPaymentMethod('online')}
-            />
-            Online Payment
-          </label>
-        </div>
-        <button type="submit">Proceed to Pay</button>
+        <label>
+          <input
+            type="radio"
+            name="paymentMethod"
+            value="cod"
+            checked={paymentMethod === 'cod'}
+            onChange={() => setPaymentMethod('cod')}
+          />
+          Cash on Delivery
+        </label>
+        <br />
+        <label>
+          <input
+            type="radio"
+            name="paymentMethod"
+            value="online"
+            checked={paymentMethod === 'online'}
+            onChange={() => setPaymentMethod('online')}
+          />
+          Online Payment
+        </label>
+        <br />
+        <button type="submit">Place Order</button>
       </form>
     </div>
   );

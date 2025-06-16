@@ -1,11 +1,21 @@
 import React, { useContext } from 'react';
 import './Cart.css';
 import { StoreContext } from '../../context/StoreContext';
-import { useNavigate } from 'react-router-dom'; // Add this import
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Cart = () => {
-  const { cartItems, food_list, removeFromCart, getTotalCartAmount,url} = useContext(StoreContext);
+  const { cartItems, food_list, removeFromCart, getTotalCartAmount, url, token } = useContext(StoreContext);
   const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    if (!token) {
+      toast.warning("Please login to proceed to checkout.");
+      navigate('/login');
+    } else {
+      navigate('/order');
+    }
+  };
 
   return (
     <div className='cart'>
@@ -25,39 +35,46 @@ const Cart = () => {
             return (
               <div key={item._id}>
                 <div className='cart-items-title cart-items-item'>
-                  <img src={url+"/images/"+item.image} alt={item.name || 'Food item'} /> {/* Added default alt text */}
+                  <img src={`${url}/images/${item.image}`} alt={item.name || 'Food item'} />
                   <p>{item.name}</p>
                   <p>₹{item.price}</p>
                   <p>{cartItems[item._id]}</p>
                   <p>₹{item.price * cartItems[item._id]}</p>
-                  <p onClick={() => removeFromCart(item._id)} className='cross'> x </p>
+                  <button onClick={() => removeFromCart(item._id)} className='cross'> Remove </button>
                 </div>
                 <hr />
               </div>
             );
           }
-          return null; // Ensure there's a return statement in all branches
+          return null;
         })}
       </div>
+
       <div className="cart-bottom">
         <div className="cart-total">
           <h2>Cart Totals</h2>
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>₹{getTotalCartAmount()}</p> {/* Call the function */}
+              <p>₹{getTotalCartAmount()}</p>
             </div>
             <div className="cart-total-details">
               <p>Delivery fee</p>
-              <p>₹{getTotalCartAmount()===0?0:2}</p> {/* Directly use the value */}
+              <p>₹{getTotalCartAmount() === 0 ? 0 : 2}</p>
             </div>
             <div className="cart-total-details">
               <b>Total</b>
-              <b>₹{getTotalCartAmount()===0?0:getTotalCartAmount() + 2}</b> {/* Call the function */}
+              <b>₹{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</b>
             </div>
           </div>
-          <button onClick={() => navigate('/order')}>PROCEED TO CHECKOUT</button>
+          <button 
+            onClick={handleCheckout}
+            disabled={getTotalCartAmount() === 0}
+          >
+            {token ? "PROCEED TO CHECKOUT" : "LOGIN TO CHECKOUT"}
+          </button>
         </div>
+
         <div className="cart-promocode">
           <div>
             <p>If you have a promo code, enter it here</p>

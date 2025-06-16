@@ -1,39 +1,84 @@
-.add{
+.add {
     width: 70%;
-    margin-top: -95.3vh;
-    color: #6d6d6d;
-    font-size: 16px;
+    margin-top: -102vh;
     margin-left: 20vw;
+    color: #4a4a4a;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f9f9f9;
+    padding: 2vw;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
-.add form{
-    gap: 20px;
-}
-.add-img-upload img{
-    width: 120px;
-}
-
-.add-product-name, .add-product-description{
-    width: max(40%,280px);
-}
-.add-product-name input, .add-product-description textarea{
-    padding: 10px;
-}
-.add-category-price{
+.add form {
     display: flex;
-}
-.add-category-price select,.add-category-price input{
-    max-width: 120px;
-    padding: 10px;
+    flex-direction: column;
+    /* gap: 20px; */
 }
 
-.add-btn{
-    max-width: 120px;
+.add-img-upload img {
+    width: 140px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 4px;
+    transition: transform 0.3s;
+}
+
+.add-img-upload img:hover {
+    transform: scale(1.05);
+}
+
+.add-product-name,
+.add-product-description {
+    width: max(40%, 280px);
+}
+
+.add-product-name input,
+.add-product-description textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.add-product-name input:focus,
+.add-product-description textarea:focus {
+    border-color: #888;
+    outline: none;
+}
+
+.add-category-price {
+    display: flex;
+    /* gap: 15px; */
+    align-items: center;
+}
+
+.add-category-price select,
+.add-category-price input {
+    max-width: 140px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.add-btn {
+    max-width: 140px;
     border: none;
     padding: 1vw;
-    background-color: black;
-    color: white;
+    background: linear-gradient(135deg, #000, #5b5858);
+    color: #fff;
     cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.add-btn:hover {
+    background: linear-gradient(135deg, #333, #000);
+    transform: translateY(-2px);
 }
 
 @media (max-width: 900px) {
@@ -41,11 +86,14 @@
         width: 90%;
         margin-left: 5vw;
         margin-top: 5vh;
+        padding: 4vw;
     }
+
     .add-category-price {
         flex-direction: column;
         gap: 10px;
     }
+
     .add-btn {
         width: 100%;
         max-width: none;

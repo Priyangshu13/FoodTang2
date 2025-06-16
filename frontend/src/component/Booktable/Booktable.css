@@ -1,0 +1,52 @@
+.Maincontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8vh;
+    
+    
+}
+.booktable{
+background-color: #a3370f;
+padding: 4vh 6vw;
+position: absolute;
+margin-top: -17vh;
+border-radius: 30px;
+border: 2px solid #ffffff;
+display:flex;
+flex-direction: column;
+box-shadow: 8px 5px 40px rgb(51, 51, 51);
+justify-content: space-between;
+gap: 20px;
+text-align: center;
+
+}
+
+.booktable-btn{
+ padding: 15px 30px;
+ font-size: 18px;
+ border-radius:15px;
+ border: none;
+ background-color: #4b0101;
+ color: #ffffff;
+ transition: 0.6s;
+ cursor: pointer;
+font-weight: bold;
+}
+
+.booktable-btn:hover{
+    background-color: #ffffff;
+    color:#4b0101 ;
+}
+.locationbox{
+    font-size: 16px;
+    padding: 18px 70px 18px 70px;
+    border-radius: 15px;
+    background-color: #F8B936;
+    border: none;
+    outline: none;
+    text-align: center;
+    -webkit-appearance: none;
+    /* display: block; */
+
+}

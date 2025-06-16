@@ -10,6 +10,7 @@ import Login from './pages/Login/Login'
 import Inventory from './pages/Inventory/Inventory'
 import StaffControl from './pages/Staffcontroll/StaffControl'
 import Reservation from './pages/Reservation/Reservation'
+import Booking from './pages/Booking/Booking'
 
 const App = () => {
   const url = "http://localhost:4000"
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/" element={<Navigate to="/login"/>} />
           <Route path="/login" element={<Login url={url} />} />
           <Route path="/dashboard" element={<Dashboard url={url} />} />
+          <Route path="/booking" element={<Booking url={url} />} />
           <Route path="/inventory" element={<Inventory url={url} />} />
           <Route path="/list" element={<List url={url} />} />
           <Route path="/orders" element={<Orders url={url} />} />

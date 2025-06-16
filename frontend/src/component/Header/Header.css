@@ -1,12 +1,19 @@
 .header{
-    height: 70vh;
-    margin: 25px auto;
-    background: url('/header_img.png') no-repeat;
+    height: 80vh;
+    /* padding-top:4px; */
+    background: url('src/assets/Headerimg.png') no-repeat;
     /* border-radius: 15px 15px 15px 15px; */
     background-size: cover;
     position: relative;
+    z-index: 0;
 }
-
+.headerBg{
+    height: 100%;
+    z-index: 1;
+    position: inherit;
+    background-size: cover;
+    background: linear-gradient(0.25turn, #521A03, #52190300);
+}
 .header-contain{
     position: absolute;
     display: flex;
@@ -14,12 +21,13 @@
     gap: 1.5vw;
     align-items: flex-start;
     max-width: 48%;
-    bottom: 12%;
+    bottom: 22%;
     left: 5vw;
     animation: fadeIn 3s;
 }
 
 .header-contain h2{
+    font-family: 'Titan One',cursive;;
     font-weight: 500;
     color: white;
     font-size: max(5vw, 20px);
@@ -33,12 +41,13 @@
 .header-contain button{
     cursor: pointer;
     border: none;
-    color: #747474;
+    color: #722c00;
     font-weight: 550;
     padding: 1vw 2.3vw;
-    background-color: white;
+    background-color: #F8B936;
     font-size: max(1vw, 15px);
     border-radius: 40px;
+    font-weight: bold;
 }
 
 @media (max-width: 1050px){
