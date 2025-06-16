@@ -64,7 +64,7 @@ const Signup = () => {
         }
 
         try {
-            const url = "http://localhost:4000/manager/signup";
+            const url = "https://foodtang-backend.onrender.com/manager/signup";
             const response = await fetch(url, {
                 method: "POST",
                 headers: {

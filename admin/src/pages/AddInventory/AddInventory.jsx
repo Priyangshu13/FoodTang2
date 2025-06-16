@@ -19,7 +19,7 @@ const Inventory = () => {
 
   const fetchItems = async () => {
     try {
-      const res = await axios.get('http://localhost:4000/api/inventory');
+      const res = await axios.get('https://foodtang-backend.onrender.com/api/inventory');
       setItems(Array.isArray(res.data) ? res.data : []);
     } catch (error) {
       console.error('Failed to load inventory:', error);
@@ -42,10 +42,10 @@ const Inventory = () => {
 
     try {
       if (editingItem) {
-        await axios.put(`http://localhost:4000/api/inventory/${editingItem._id}`, payload);
+        await axios.put(`https://foodtang-backend.onrender.com/api/inventory/${editingItem._id}`, payload);
         console.log('Item updated.');
       } else {
-        await axios.post('http://localhost:4000/api/inventory', payload);
+        await axios.post('https://foodtang-backend.onrender.com/api/inventory', payload);
         console.log('Item added.');
       }
 
@@ -58,7 +58,7 @@ const Inventory = () => {
 
   const deleteItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/inventory/${id}`);
+      await axios.delete(`https://foodtang-backend.onrender.com/api/inventory/${id}`);
       fetchItems();
     } catch (error) {
       console.error('Failed to delete item:', error);
@@ -85,7 +85,7 @@ const Inventory = () => {
     if (adjustedQty === '') return;
 
     try {
-      await axios.put(`http://localhost:4000/api/inventory/${id}`, {
+      await axios.put(`https://foodtang-backend.onrender.com/api/inventory/${id}`, {
         quantity: parseFloat(adjustedQty),
       });
       console.log('Quantity adjusted');

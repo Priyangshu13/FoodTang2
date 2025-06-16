@@ -4,7 +4,7 @@ import "./Add.css";
 import { assets } from "../../assets/assets";
 import axios from "axios";
 
-const Add = ({ url = "http://localhost:4000" }) => { // Default URL
+const Add = ({ url = "https://foodtang-backend.onrender.com" }) => { // Default URL
   const [image, setImage] = useState(false);
   const [data, setData] = useState({
     name: "",

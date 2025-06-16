@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import "./List.css";
 
-const List = ({ url = "http://localhost:4000" }) => {
+const List = ({ url = "http://localhost:4000" }) => { // Provide a default URL
   const [list, setList] = useState([]);
   const [error, setError] = useState(null);
   const [notification, setNotification] = useState("");

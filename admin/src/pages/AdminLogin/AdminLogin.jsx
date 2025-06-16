@@ -26,7 +26,7 @@ const AdminLogin = () => {
         }
 
         try {
-            const url = "http://localhost:4000/admin/login"; 
+            const url = "https://foodtang-backend.onrender.com/admin/login"; 
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
