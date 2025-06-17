@@ -1,8 +1,8 @@
-// src/components/CheckoutPayment.jsx
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
+import './CheckoutPayment.css';
 
 const CheckoutPayment = () => {
   const navigate = useNavigate();
@@ -55,32 +55,34 @@ const CheckoutPayment = () => {
   };
 
   return (
-    <div>
-      <h2>Checkout</h2>
-      <form onSubmit={placeOrder}>
-        <label>
+    <div className="checkout-payment">
+      <h2 className="checkout-title">Checkout</h2>
+      <form className="checkout-form" onSubmit={placeOrder}>
+        <label className="checkout-label">
           <input
             type="radio"
             name="paymentMethod"
             value="cod"
             checked={paymentMethod === 'cod'}
             onChange={() => setPaymentMethod('cod')}
+            className="checkout-radio"
           />
           Cash on Delivery
         </label>
         <br />
-        <label>
+        <label className="checkout-label">
           <input
             type="radio"
             name="paymentMethod"
             value="online"
             checked={paymentMethod === 'online'}
             onChange={() => setPaymentMethod('online')}
+            className="checkout-radio"
           />
-          Online Payment
+          Online Payment(Currently in Progress)
         </label>
         <br />
-        <button type="submit">Place Order</button>
+        <button type="submit" className="checkout-button">Place Order</button>
       </form>
     </div>
   );
