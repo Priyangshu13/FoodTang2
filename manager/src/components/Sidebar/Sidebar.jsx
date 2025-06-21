@@ -42,10 +42,10 @@ const Sidebar = () => {
             <img src={assets.reservation} alt="Order icon" />
             <p>Reservation Status</p>
         </NavLink>
-        {/* <NavLink to='./staffcontroll' className="sidebar-option">
+        <NavLink to='./staffcontroll' className="sidebar-option">
             <img src={assets.staffcontrol} alt="Order icon" />
             <p>Staff Controll</p>
-        </NavLink> */}
+        </NavLink>
       </div>
     </div>
   )

@@ -41,7 +41,7 @@ const AdminSidebar = () => {
           <img src={assets.inventory} alt=" " />
           <p>Payment Updation</p>
         </NavLink>
-        {/* <NavLink to='/orderanalysis' className="AdminSidebar-option">
+        <NavLink to='/orderanalysis' className="AdminSidebar-option">
           <img src={assets.order_analysis} alt=" " />
           <p>Orders Analysis</p>
         </NavLink>
@@ -52,7 +52,7 @@ const AdminSidebar = () => {
         <NavLink to='/review' className="AdminSidebar-option">
           <img src={assets.review} alt="" />
           <p>Customer Review</p>
-        </NavLink> */}
+        </NavLink>
       </div>
     </div>
   );
