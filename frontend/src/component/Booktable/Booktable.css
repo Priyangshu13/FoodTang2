@@ -47,6 +47,7 @@
     border: none;
     outline: none;
     text-align: center;
+    appearance: none;
     -webkit-appearance: none;
     width: 100%;
     box-sizing: border-box;
